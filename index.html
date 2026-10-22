@@ -44,6 +44,17 @@ h1{font:600 clamp(3.5rem,7vw,7.5rem)/.92 'Playfair Display',serif;letter-spacing
 @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{min-height:480px}.art-frame{max-width:420px}.section-head{grid-template-columns:1fr;gap:15px}.problem-grid,.steps{grid-template-columns:repeat(2,1fr);row-gap:25px}.dashboard,.research{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.impact{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){nav{padding:12px 18px}.menu{display:block}.navlinks{display:none;position:absolute;top:61px;left:0;right:0;background:var(--paper);padding:18px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line)}.navlinks.open{display:flex}.navlinks a{padding:9px 0}.hero{min-height:auto;padding:55px 0 45px}.hero-art{min-height:390px}.art-stamp{right:-5px;width:78px;height:78px;font-size:.53rem}.side-note{left:-2px;font-size:.58rem}h1{font-size:clamp(3.4rem,17vw,5.2rem)}.hero-meta{gap:18px}.section{padding:70px 0}.problem-grid,.steps,.features,.impact{grid-template-columns:1fr}.problem{min-height:170px}.workflow{padding-top:70px;padding-bottom:70px}.step{margin-right:0}.metric strong{font-size:2rem}.panel{padding:17px}.contact{grid-template-columns:1fr;padding-top:48px;padding-bottom:48px}.about-grid{grid-template-columns:1fr}.profile-frame{max-width:290px}.about-copy{max-width:700px}.contact .btn{width:max-content}.research-card{padding:25px 20px}footer{padding-top:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
+
+.game-showcase{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,70px);align-items:center;padding:clamp(60px,9vw,110px) clamp(22px,7vw,100px);background:#e8dfca;color:#173c3b}
+.game-showcase h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.3rem,5vw,4.4rem);line-height:1.05;margin:0 0 18px}
+.game-showcase p{max-width:620px;line-height:1.8}
+.game-card{background:#173c3b;color:#f2ead8;padding:clamp(24px,4vw,42px);border-radius:6px;border:1px solid rgba(23,60,59,.2);box-shadow:10px 10px 0 #b85d3e}
+.game-card-top{display:flex;justify-content:space-between;gap:12px;font-size:.7rem;letter-spacing:.1em}
+.game-symbol{display:grid;place-items:center;width:84px;height:84px;border:1px solid #e4b95f;border-radius:50%;font-size:2rem;color:#e4b95f;margin:30px 0 22px;padding-left:5px}
+.game-card h3{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;margin:0 0 8px}
+.game-card a{color:#f8d4c4;text-underline-offset:4px}
+@media(max-width:760px){.game-showcase{grid-template-columns:1fr}.game-card{max-width:600px}}
+
 </style>
 </head>
 <body>
@@ -52,7 +63,7 @@ h1{font:600 clamp(3.5rem,7vw,7.5rem)/.92 'Playfair Display',serif;letter-spacing
   <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">MENU ☰</button>
   <div class="navlinks" id="navLinks">
     <a href="#about">About Me</a><a href="#challenge">The Challenge</a><a href="#system">How It Works</a><a href="#dashboard">Field Console</a><a href="#research">The Study</a><a class="nav-cta" href="#contact">Project Details ↗</a>
-  </div>
+  <a href="#my-game">My Game</a></div>
 </nav>
 <main>
 <section class="hero" id="home">
@@ -94,7 +105,7 @@ h1{font:600 clamp(3.5rem,7vw,7.5rem)/.92 'Playfair Display',serif;letter-spacing
       <p>Hello! I’m <strong>Limuel Catarata</strong>, an Information Technology student presenting a capstone project focused on helping fisherfolk in Barangay Pasil, Cebu City. This project explores how AI-assisted analysis and IoT sensors could make fish-drying conditions easier to monitor and help users receive timely warnings.</p>
       <p>This website combines a nostalgic coastal field-journal style with a modern technology concept. The goal is to make the research feel personal, practical, and connected to the community it is intended to support.</p>
       <div class="about-tags"><span>AI & IoT</span><span>Web Design</span><span>Research & Documentation</span><span>Community-focused Technology</span></div>
-      <a class="gmail-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=limuelruiz21%40gmail.com&su=Hello%20from%20your%20portfolio" target="_blank" rel="noopener noreferrer">✉ Message me on Gmail ↗</a>
+      <a class="gmail-btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=limuelruiz21%40gmail.com&amp;su=Hello%20from%20your%20portfolio" target="_blank" rel="noopener noreferrer">✉ Message me on Gmail ↗</a>
     </div>
   </div>
 </section>
@@ -178,6 +189,23 @@ h1{font:600 clamp(3.5rem,7vw,7.5rem)/.92 'Playfair Display',serif;letter-spacing
     <div class="impact-item reveal"><strong>02</strong><p>Support improved dried-fish quality through better awareness of the drying environment.</p></div>
     <div class="impact-item reveal"><strong>03</strong><p>Help fisherfolk make timely decisions and use their monitoring time more effectively.</p></div>
     <div class="impact-item reveal"><strong>04</strong><p>Contribute to livelihood resilience and the goal of SDG 1: No Poverty.</p></div>
+  </div>
+</section>
+
+
+<section class="game-showcase" id="my-game">
+  <div class="game-copy reveal">
+    <div class="mono" style="color:var(--rust, #b85d3e);margin-bottom:12px">FEATURED GAME · PLAY ONLINE</div>
+    <h2>My Game Project</h2>
+    <p>Explore and play my game project in your browser. Select the button below to open the live game in a new tab.</p>
+    <a class="btn primary" href="https://lbs-vyo1.onrender.com/" target="_blank" rel="noopener noreferrer">Play My Game ↗</a>
+  </div>
+  <div class="game-card reveal">
+    <div class="game-card-top mono"><span>GAME PROJECT</span><span>LIVE LINK</span></div>
+    <div class="game-symbol" aria-hidden="true">▶</div>
+    <h3>Ready to Play?</h3>
+    <p>Hosted online · Opens in a separate tab</p>
+    <a href="https://lbs-vyo1.onrender.com/" target="_blank" rel="noopener noreferrer">Open game website ↗</a>
   </div>
 </section>
 
