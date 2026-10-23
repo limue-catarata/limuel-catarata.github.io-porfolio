@@ -1,89 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Limuel Catarata’s futuristic student portfolio featuring web development, application projects, game design, and AI/IoT capstone work.">
-  <title>Limuel Catarata | Student Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173c3b">
+<meta name="description" content="A research portfolio for the proposed AI-Enabled IoT-Based Smart Fish Drying Monitoring System for fisherfolk in Barangay Pasil, Cebu City.">
+<title>Pasil Field Notes — Smart Fish Drying</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{--ink:#183735;--deep:#153735;--sea:#477c70;--mint:#c5d8c7;--paper:#f2ead8;--paper2:#e6dcc5;--rust:#b85d3e;--sun:#e4b95f;--line:rgba(24,55,53,.22);--muted:#62716a;--white:#fffaf0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.19'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem}.serif{font-family:'Playfair Display',serif}
+nav{position:sticky;top:0;z-index:20;background:rgba(242,234,216,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px clamp(18px,5vw,72px)}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700}.brandmark{width:34px;height:34px;background:var(--deep);color:var(--sun);display:grid;place-items:center;border-radius:50%;font-size:1.1rem}
+.navlinks{display:flex;gap:clamp(12px,2.5vw,32px);align-items:center}.navlinks a{font-size:.78rem;color:var(--muted)}.navlinks a:hover{color:var(--rust)}.nav-cta{background:var(--deep);color:var(--white)!important;padding:10px 15px;border-radius:2px}
+.menu{display:none;background:none;border:1px solid var(--line);padding:8px 10px;color:var(--ink)}
+main{max-width:1440px;margin:auto;padding:0 clamp(18px,5vw,72px)}
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1.02fr .98fr;gap:5vw;align-items:center;padding:60px 0 76px;position:relative}
+.kicker{display:flex;align-items:center;gap:12px;color:var(--rust);margin-bottom:22px}.kicker:before{content:"";height:1px;width:35px;background:var(--rust)}
+h1{font:600 clamp(3.5rem,7vw,7.5rem)/.92 'Playfair Display',serif;letter-spacing:-.065em;margin:0 0 28px;max-width:760px}h1 em{font-weight:500;color:var(--rust)}.hero-copy{font-size:1.05rem;line-height:1.8;color:#4c6259;max-width:550px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border:1px solid var(--deep);font-size:.82rem;font-weight:700;transition:.2s}.btn.primary{background:var(--deep);color:var(--white)}.btn:hover{transform:translateY(-3px);box-shadow:4px 4px 0 var(--sun)}.hero-meta{display:flex;gap:25px;flex-wrap:wrap;margin-top:44px;padding-top:18px;border-top:1px solid var(--line)}.hero-meta div{display:flex;flex-direction:column;gap:6px}.hero-meta strong{font:600 1rem 'Playfair Display',serif}.hero-meta span{font-size:.7rem;color:var(--muted)}
+.hero-art{position:relative;min-height:580px;display:flex;align-items:center;justify-content:center}
+.art-frame{position:relative;width:min(100%,510px);aspect-ratio:4/5;background:#d4c9ae;border:1px solid var(--deep);padding:12px;transform:rotate(1.4deg);box-shadow:16px 18px 0 rgba(24,55,53,.1)}
+.art-inner{height:100%;position:relative;overflow:hidden;background:#244e49}
+.sun-disc{position:absolute;width:55%;aspect-ratio:1;border-radius:50%;background:var(--sun);top:10%;left:23%;box-shadow:0 0 0 16px rgba(228,185,95,.12),0 0 0 36px rgba(228,185,95,.07)}
+.wave{position:absolute;left:-10%;width:120%;height:48%;border-radius:50% 50% 0 0 / 18% 18% 0 0;bottom:-10%;background:#477c70;transform:rotate(-7deg)}.wave.two{bottom:-22%;background:#1d4945;transform:rotate(8deg)}.wave.three{bottom:-34%;background:#122f31;transform:rotate(-2deg)}
+.drying-rack{position:absolute;z-index:3;left:15%;right:15%;height:25%;bottom:21%;border:4px solid #d4c9ae;border-bottom:0;transform:perspective(200px) rotateX(-8deg)}
+.rack-line{position:absolute;left:0;right:0;top:35%;border-top:3px solid #d4c9ae;box-shadow:0 14px 0 #d4c9ae,0 28px 0 #d4c9ae}
+.fish{position:absolute;z-index:4;left:22%;right:22%;top:36%;height:24%;display:flex;justify-content:space-around;align-items:center}.fish span{display:block;width:19%;height:15px;background:#e7b77a;border-radius:60% 35% 35% 60%;transform:rotate(-10deg);position:relative}.fish span:after{content:"";position:absolute;right:-7px;top:2px;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #e7b77a}
+.art-label{position:absolute;z-index:5;left:20px;bottom:20px;color:var(--white);font-size:.67rem;line-height:1.7}.art-stamp{position:absolute;right:-25px;top:10%;z-index:6;width:100px;height:100px;border:1px solid var(--rust);color:var(--rust);border-radius:50%;display:grid;place-items:center;text-align:center;font:500 .65rem/1.5 'DM Mono',monospace;transform:rotate(12deg);background:var(--paper)}
+.tape{position:absolute;top:-10px;left:35%;width:100px;height:26px;background:rgba(228,185,95,.68);transform:rotate(-5deg);z-index:7}
+.side-note{position:absolute;left:-10px;bottom:10%;writing-mode:vertical-rl;transform:rotate(180deg);color:var(--muted)}
+.section{padding:100px 0;border-top:1px solid var(--line)}.section-head{display:grid;grid-template-columns:.5fr 1.5fr;gap:30px;margin-bottom:45px}.eyebrow{color:var(--rust);padding-top:10px}.section h2{font:600 clamp(2.4rem,4.6vw,4.5rem)/1.02 'Playfair Display',serif;letter-spacing:-.045em;margin:0}.section-intro{max-width:660px;color:var(--muted);line-height:1.8;margin:18px 0 0}
+.problem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.problem{padding:22px 20px;border:1px solid var(--line);min-height:210px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,250,240,.28)}.problem .number{font:500 2rem 'Playfair Display',serif;color:var(--rust)}.problem h3{font:600 1.2rem 'Playfair Display',serif;margin:20px 0 8px}.problem p{font-size:.85rem;line-height:1.65;color:var(--muted);margin:0}
+.workflow{background:var(--deep);color:var(--white);margin:0 calc(clamp(18px,5vw,72px)*-1);padding:90px clamp(18px,5vw,72px);position:relative;overflow:hidden}.workflow:after{content:"PASIL • CEBU • PHILIPPINES";position:absolute;right:-10px;bottom:8px;font:500 clamp(1.5rem,5vw,5rem) 'DM Mono',monospace;color:rgba(255,255,255,.035);white-space:nowrap}.workflow .section-head{position:relative;z-index:1}.workflow .eyebrow{color:var(--sun)}.workflow .section-intro{color:#bfd0c7}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}.step{border-top:1px solid #66877b;padding:24px 22px 10px 0;margin-right:22px;position:relative}.step:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--sun)}.step .mono{color:var(--sun)}.step h3{font:600 1.45rem 'Playfair Display',serif;margin:20px 0 10px}.step p{color:#c1d0c6;font-size:.85rem;line-height:1.75}
+.dashboard{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.panel{border:1px solid var(--deep);background:var(--white);padding:24px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line)}.panel-head h3{font:600 1.4rem 'Playfair Display',serif;margin:0}.status{display:inline-flex;gap:7px;align-items:center;font:500 .65rem 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#3f755f}.status:before{content:"";width:7px;height:7px;border-radius:50%;background:#5c9b73}.metric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.metric{padding:18px;background:#f1eadb}.metric label{font-size:.72rem;color:var(--muted)}.metric strong{display:block;font:600 2.3rem 'Playfair Display',serif;margin:8px 0}.metric small{font-size:.72rem;color:var(--muted)}.meter{height:6px;background:#d7dfd2;margin-top:12px}.meter span{display:block;height:100%;background:var(--sea);width:var(--w)}.alert-card{background:#f4e3d8;border-left:4px solid var(--rust);padding:18px;margin-top:14px}.alert-card .mono{color:var(--rust)}.alert-card p{font-size:.85rem;line-height:1.65;margin:8px 0 0}.chart{width:100%;height:160px;margin-top:20px}.chart svg{width:100%;height:100%;overflow:visible}.chart .gridline{stroke:#d8d0bf;stroke-width:1;stroke-dasharray:3 5}.chart .line{fill:none;stroke:var(--sea);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.chart .area{fill:rgba(71,124,112,.12)}.chart-labels{display:flex;justify-content:space-between;color:var(--muted);font: .62rem 'DM Mono',monospace;margin-top:5px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.feature{border:1px solid var(--line);padding:25px;min-height:220px;position:relative}.feature .icon{font-size:1.7rem;color:var(--rust)}.feature h3{font:600 1.35rem 'Playfair Display',serif;margin:20px 0 10px}.feature p{font-size:.86rem;line-height:1.75;color:var(--muted);margin:0}
+.research{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}.research-card{background:var(--paper2);padding:32px;position:relative}.research-card:before{content:"FIELD RECORD";position:absolute;right:20px;top:20px;font:500 .6rem 'DM Mono',monospace;letter-spacing:.12em;color:var(--rust)}.research-card h3{font:600 1.8rem 'Playfair Display',serif;margin:0 0 16px}.research-card p{line-height:1.8;color:#52645b;font-size:.9rem}.research-list{list-style:none;margin:0;padding:0}.research-list li{padding:17px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:45px 1fr;gap:15px}.research-list .n{font:500 .75rem 'DM Mono',monospace;color:var(--rust);padding-top:4px}.research-list strong{font:600 1.05rem 'Playfair Display',serif}.research-list p{margin:6px 0 0;font-size:.82rem;line-height:1.6;color:var(--muted)}
+.impact{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.impact-item{padding:24px 18px;background:var(--mint);min-height:180px}.impact-item strong{font:600 2rem 'Playfair Display',serif;display:block;margin-bottom:25px}.impact-item p{font-size:.85rem;line-height:1.6;margin:0}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(25px,5vw,70px);align-items:center}.profile-frame{max-width:360px;width:100%;margin:auto;padding:12px;border:1px solid var(--deep);background:var(--paper2);box-shadow:12px 12px 0 rgba(24,55,53,.1);transform:rotate(-1.5deg)}.profile-art{aspect-ratio:4/5;position:relative;overflow:hidden;background:#244e49;display:grid;place-items:center}.profile-art svg{width:100%;height:100%;display:block}.profile-photo{width:100%;height:100%;display:block;object-fit:cover;object-position:center 35%;}.profile-caption{padding:12px 5px 3px;font:500 .65rem 'DM Mono',monospace;letter-spacing:.08em;color:var(--muted)}.about-copy h3{font:600 clamp(2rem,3.5vw,3.5rem)/1.08 'Playfair Display',serif;margin:0 0 18px}.about-copy p{line-height:1.85;color:var(--muted)}.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}.about-tags span{border:1px solid var(--line);padding:8px 11px;font-size:.72rem}.gmail-btn{display:inline-flex;gap:10px;align-items:center;background:var(--deep);color:var(--white);padding:14px 18px;font-weight:700;font-size:.82rem}.gmail-btn:hover{box-shadow:4px 4px 0 var(--sun);transform:translateY(-2px)}.disclaimer{border:1px dashed var(--rust);padding:18px 20px;margin-top:24px;color:#705347;font-size:.8rem;line-height:1.7}.contact{background:var(--rust);color:var(--white);padding:60px clamp(18px,5vw,72px);margin:0 calc(clamp(18px,5vw,72px)*-1);display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}.contact h2{font:600 clamp(2.4rem,5vw,4.8rem)/1 'Playfair Display',serif;letter-spacing:-.04em;margin:0 0 12px}.contact p{max-width:600px;line-height:1.7;color:#f8ded1}.contact .btn{border-color:var(--white);color:var(--white)}footer{padding:24px 0 35px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:.72rem}.footer-mark{font-family:'Playfair Display',serif;color:var(--ink);font-weight:700}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{min-height:480px}.art-frame{max-width:420px}.section-head{grid-template-columns:1fr;gap:15px}.problem-grid,.steps{grid-template-columns:repeat(2,1fr);row-gap:25px}.dashboard,.research{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.impact{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){nav{padding:12px 18px}.menu{display:block}.navlinks{display:none;position:absolute;top:61px;left:0;right:0;background:var(--paper);padding:18px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line)}.navlinks.open{display:flex}.navlinks a{padding:9px 0}.hero{min-height:auto;padding:55px 0 45px}.hero-art{min-height:390px}.art-stamp{right:-5px;width:78px;height:78px;font-size:.53rem}.side-note{left:-2px;font-size:.58rem}h1{font-size:clamp(3.4rem,17vw,5.2rem)}.hero-meta{gap:18px}.section{padding:70px 0}.problem-grid,.steps,.features,.impact{grid-template-columns:1fr}.problem{min-height:170px}.workflow{padding-top:70px;padding-bottom:70px}.step{margin-right:0}.metric strong{font-size:2rem}.panel{padding:17px}.contact{grid-template-columns:1fr;padding-top:48px;padding-bottom:48px}.about-grid{grid-template-columns:1fr}.profile-frame{max-width:290px}.about-copy{max-width:700px}.contact .btn{width:max-content}.research-card{padding:25px 20px}footer{padding-top:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
+
+.game-showcase{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,70px);align-items:center;padding:clamp(60px,9vw,110px) clamp(22px,7vw,100px);background:#e8dfca;color:#173c3b}
+.game-showcase h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.3rem,5vw,4.4rem);line-height:1.05;margin:0 0 18px}
+.game-showcase p{max-width:620px;line-height:1.8}
+.game-card{background:#173c3b;color:#f2ead8;padding:clamp(24px,4vw,42px);border-radius:6px;border:1px solid rgba(23,60,59,.2);box-shadow:10px 10px 0 #b85d3e}
+.game-card-top{display:flex;justify-content:space-between;gap:12px;font-size:.7rem;letter-spacing:.1em}
+.game-symbol{display:grid;place-items:center;width:84px;height:84px;border:1px solid #e4b95f;border-radius:50%;font-size:2rem;color:#e4b95f;margin:30px 0 22px;padding-left:5px}
+.game-card h3{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;margin:0 0 8px}
+.game-card a{color:#f8d4c4;text-underline-offset:4px}
+@media(max-width:760px){.game-showcase{grid-template-columns:1fr}.game-card{max-width:600px}}
+
+</style>
 </head>
 <body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Limuel Catarata home"><span class="brand-mark">LC</span><span>LIMUEL<span class="accent">.</span></span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav id="mainNav" aria-label="Main navigation">
-      <a href="#home" class="nav-link active">Home</a><a href="#about" class="nav-link">About</a>
-      <a href="#skills" class="nav-link">Skills</a><a href="#projects" class="nav-link">Projects</a><a href="#capstone" class="nav-link">Capstone</a><a href="#contact" class="nav-link">Contact</a>
-    </nav>
-  </header>
+<nav>
+  <a class="brand" href="#home"><span class="brandmark">≈</span><span>Pasil Field Notes</span></a>
+  <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">MENU ☰</button>
+  <div class="navlinks" id="navLinks">
+    <a href="#about">About Me</a><a href="#challenge">The Challenge</a><a href="#system">How It Works</a><a href="#dashboard">Field Console</a><a href="#research">The Study</a><a class="nav-cta" href="#contact">Project Details ↗</a>
+  <a href="#my-game">My Game</a></div>
+</nav>
+<main>
+<section class="hero" id="home">
+  <div class="hero-text reveal">
+    <div class="kicker mono">A community technology research project · Cebu City</div>
+    <h1>Keep the catch.<br><em>Protect the</em><br>livelihood.</h1>
+    <p class="hero-copy">A nostalgic field-journal inspired portfolio for a proposed AI-enabled IoT system that helps fisherfolk in Barangay Pasil monitor fish-drying conditions, anticipate weather risks, and respond before a good catch becomes a loss.</p>
+    <div class="hero-actions"><a class="btn primary" href="#system">Explore the system <span>↘</span></a><a class="btn" href="#research">Read the research <span>↗</span></a></div>
+    <div class="hero-meta">
+      <div><strong>Barangay Pasil</strong><span>Study location</span></div>
+      <div><strong>AI + IoT</strong><span>Proposed approach</span></div>
+      <div><strong>SDG 1</strong><span>No Poverty alignment</span></div>
+    </div>
+  </div>
+  <div class="hero-art reveal" aria-label="Stylized illustration of a sun, sea, and fish-drying rack">
+    <span class="side-note mono">Field study no. 01 / Pasil coast</span>
+    <div class="art-frame"><div class="tape"></div><div class="art-inner">
+      <div class="sun-disc"></div><div class="wave"></div><div class="wave two"></div><div class="wave three"></div>
+      <div class="drying-rack"><div class="rack-line"></div></div><div class="fish"><span></span><span></span><span></span><span></span></div>
+      <div class="art-label mono">PASIL, CEBU CITY<br>FIELD NOTES — 2026<br>“Technology in service of livelihood.”</div>
+    </div></div>
+    <div class="art-stamp">RESEARCH<br>FOR THE<br>COMMUNITY</div>
+  </div>
+</section>
 
-  <main>
-    <section class="hero section" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> IT STUDENT • CREATIVE DEVELOPER IN TRAINING</p>
-        <h1>Building ideas<br>into <span class="gradient-text">digital experiences.</span></h1>
-        <p class="hero-description">Hi, I'm <strong>Limuel Catarata</strong>. I’m an Information Technology student building digital projects and exploring how AI and IoT can help solve real community problems, including fish-drying challenges faced by fisherfolk in Barangay Pasil, Cebu City.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span>↗</span></a><a class="button button-ghost" href="#contact">Contact me</a></div>
-        <div class="hero-meta"><span>BASED IN CEBU, PHILIPPINES</span><span class="meta-line"></span><span>LEARNING BY BUILDING</span></div>
+
+<section class="section" id="about">
+  <div class="section-head reveal"><div class="eyebrow mono">About the creator</div><div><h2>The person behind<br>the field notes.</h2><p class="section-intro">A personal introduction alongside the capstone research.</p></div></div>
+  <div class="about-grid">
+    <div class="profile-frame reveal">
+      <div class="profile-art">
+        <img src="images/profile.jpg" alt="Portrait of Limuel Catarata" class="profile-photo">
       </div>
-      <div class="hero-visual">
-        <div class="visual-grid"></div>
-        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-        <div class="profile-frame">
-          <img class="profile-photo" src="images/profile.jpg" alt="Portrait of Limuel Catarata">
-          <div class="frame-corner corner-tl"></div><div class="frame-corner corner-br"></div>
-        </div>
-        <div class="floating-card card-code"><span class="mini-icon">&lt;/&gt;</span><div><b>Creative coding</b><small>Learning • Building • Improving</small></div></div>
-        <div class="floating-card card-game"><span class="mini-icon">✦</span><div><b>Game design</b><small>Ideas into playable worlds</small></div></div>
-        <div class="visual-label">PORTFOLIO / 2026</div>
+      <div class="profile-caption">LIMUEL CATARATA · IT STUDENT</div>
+    </div>
+    <div class="about-copy reveal">
+      <div class="mono" style="color:var(--rust);margin-bottom:12px">Student · IT Capstone Project</div>
+      <h3>Curious about technology that helps real people.</h3>
+      <p>Hello! I’m <strong>Limuel Catarata</strong>, an Information Technology student presenting a capstone project focused on helping fisherfolk in Barangay Pasil, Cebu City. This project explores how AI-assisted analysis and IoT sensors could make fish-drying conditions easier to monitor and help users receive timely warnings.</p>
+      <p>This website combines a nostalgic coastal field-journal style with a modern technology concept. The goal is to make the research feel personal, practical, and connected to the community it is intended to support.</p>
+      <div class="about-tags"><span>AI & IoT</span><span>Web Design</span><span>Research & Documentation</span><span>Community-focused Technology</span></div>
+      <a class="gmail-btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=limuelruiz21%40gmail.com&amp;su=Hello%20from%20your%20portfolio" target="_blank" rel="noopener noreferrer">✉ Message me on Gmail ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="challenge">
+  <div class="section-head reveal"><div class="eyebrow mono">01 / The challenge</div><div><h2>When the weather<br>changes, income is at risk.</h2><p class="section-intro">Chapter I describes how traditional open-air fish drying depends on weather and repeated manual checking. Rain, cloud cover, and humidity can slow drying or affect product quality, creating spoilage, food-safety concerns, and lost income for small-scale fisherfolk.</p></div></div>
+  <div class="problem-grid">
+    <article class="problem reveal"><span class="number">01</span><div><h3>Unpredictable weather</h3><p>Rain and changing outdoor conditions can interrupt the drying process at critical moments.</p></div></article>
+    <article class="problem reveal"><span class="number">02</span><div><h3>Constant checking</h3><p>Fisherfolk must keep watching the fish and the sky, taking time away from other work.</p></div></article>
+    <article class="problem reveal"><span class="number">03</span><div><h3>Post-harvest losses</h3><p>Improper drying can cause spoilage before the product reaches the market and reduce earnings.</p></div></article>
+    <article class="problem reveal"><span class="number">04</span><div><h3>Access and affordability</h3><p>Advanced monitoring tools can be difficult for small-scale fishing households to access.</p></div></article>
+  </div>
+</section>
+
+<section class="workflow" id="system">
+  <div class="section-head reveal"><div class="eyebrow mono">02 / System blueprint</div><div><h2>A little more foresight.<br>A lot less guesswork.</h2><p class="section-intro">The proposed system combines environmental sensing with AI-assisted analysis. It is designed to inform the user—not physically operate the drying process.</p></div></div>
+  <div class="steps">
+    <article class="step reveal"><span class="mono">Stage 01 · Sense</span><h3>Collect conditions</h3><p>IoT sensors gather temperature and humidity readings from the drying area, alongside available weather-condition information.</p></article>
+    <article class="step reveal"><span class="mono">Stage 02 · Send</span><h3>Transmit data</h3><p>Collected readings are sent to the monitoring interface so users can review current conditions and recorded observations.</p></article>
+    <article class="step reveal"><span class="mono">Stage 03 · Interpret</span><h3>Analyze risk</h3><p>The proposed AI component analyzes patterns in the data to predict potentially unfavorable drying conditions.</p></article>
+    <article class="step reveal"><span class="mono">Stage 04 · Inform</span><h3>Alert the user</h3><p>Timely alerts and recommendations help fisherfolk decide when to check, protect, or adjust their drying practice.</p></article>
+  </div>
+</section>
+
+<section class="section" id="dashboard">
+  <div class="section-head reveal"><div class="eyebrow mono">03 / Interface concept</div><div><h2>The field console.</h2><p class="section-intro">A visual concept for how readings, trends, and warnings could be presented in a clear, low-clutter dashboard. The values below are illustrative demo data, not live sensor readings or validated AI predictions.</p></div></div>
+  <div class="dashboard">
+    <div class="panel reveal">
+      <div class="panel-head"><h3>Drying environment</h3><span class="status">Demo view</span></div>
+      <div class="metric-grid">
+        <div class="metric"><label>Air temperature</label><strong id="tempValue">32.4°</strong><small>Illustrative reading</small><div class="meter"><span style="--w:68%"></span></div></div>
+        <div class="metric"><label>Relative humidity</label><strong id="humidityValue">76%</strong><small>Illustrative reading</small><div class="meter"><span style="--w:76%"></span></div></div>
       </div>
-    </section>
+      <div class="chart"><svg viewBox="0 0 520 160" role="img" aria-label="Illustrative humidity trend line chart">
+        <line class="gridline" x1="0" y1="25" x2="520" y2="25"/><line class="gridline" x1="0" y1="65" x2="520" y2="65"/><line class="gridline" x1="0" y1="105" x2="520" y2="105"/><line class="gridline" x1="0" y1="145" x2="520" y2="145"/>
+        <path class="area" d="M0,68 C45,60 58,83 100,78 S158,42 200,56 S263,88 305,75 S362,42 405,55 S470,34 520,46 L520,145 L0,145 Z"/>
+        <path class="line" d="M0,68 C45,60 58,83 100,78 S158,42 200,56 S263,88 305,75 S362,42 405,55 S470,34 520,46"/>
+      </svg></div><div class="chart-labels"><span>06:00</span><span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span></div>
+    </div>
+    <div class="panel reveal">
+      <div class="panel-head"><h3>Advisory log</h3><span class="mono">Sample state</span></div>
+      <div class="alert-card"><span class="mono">Example alert · Humidity watch</span><p>Humidity is elevated in this demo scenario. Check the drying area and review the latest weather conditions.</p></div>
+      <div class="alert-card" style="background:#e3eee2;border-color:#477c70"><span class="mono" style="color:#376c5d">Recommended next step</span><p>Review the recent trend, inspect the fish, and follow the drying practices appropriate to your setup.</p></div>
+      <p style="font-size:.75rem;line-height:1.7;color:var(--muted);margin:18px 0 0">In the proposed system, the alert logic and thresholds would need to be developed and evaluated using appropriate data and user feedback.</p>
+    </div>
+  </div>
+  <div class="disclaimer"><strong>Prototype honesty note:</strong> This portfolio illustrates the proposed system and a sample interface only. It does not claim that hardware is connected, live data is available, or the AI model has already been trained or tested.</div>
+</section>
 
-    <section class="section about-section" id="about">
-      <div class="section-heading"><p class="eyebrow">01 / ABOUT ME</p><h2>Curious mind.<br><span class="muted">Practical creator.</span></h2></div>
-      <div class="about-content"><p class="lead">I enjoy exploring how technology can solve problems and make digital experiences more useful.</p><p>As an IT student, I am developing my skills through school activities and personal practice. My interests include web development, user interface design, app development, and game creation. I value clear design, useful features, and learning from every project.</p><div class="about-facts"><div><span class="fact-number">01</span><b>Learn</b><small>Explore new tools and techniques</small></div><div><span class="fact-number">02</span><b>Create</b><small>Turn concepts into working prototypes</small></div><div><span class="fact-number">03</span><b>Improve</b><small>Test, refine, and keep growing</small></div></div></div>
-    </section>
+<section class="section" id="features">
+  <div class="section-head reveal"><div class="eyebrow mono">04 / Proposed features</div><div><h2>Designed around the<br>people doing the work.</h2><p class="section-intro">The feature direction follows the needs described in the study: accessible monitoring, practical interpretation, and timely information that supports everyday decisions.</p></div></div>
+  <div class="features">
+    <article class="feature reveal"><div class="icon">◉</div><h3>Environmental monitoring</h3><p>View temperature, humidity, and available weather conditions without relying only on repeated manual checks.</p></article>
+    <article class="feature reveal"><div class="icon">⌁</div><h3>AI-assisted prediction</h3><p>Analyze collected conditions to identify patterns and flag possible drying risks for further checking.</p></article>
+    <article class="feature reveal"><div class="icon">↯</div><h3>Timely alerts</h3><p>Receive notifications and recommendations when conditions may negatively affect fish drying.</p></article>
+    <article class="feature reveal"><div class="icon">▤</div><h3>Data history</h3><p>Keep a readable record of environmental observations to help users review changes over time.</p></article>
+    <article class="feature reveal"><div class="icon">♧</div><h3>Community-first design</h3><p>Prioritize a straightforward interface and useful information for small-scale fisherfolk.</p></article>
+    <article class="feature reveal"><div class="icon">◎</div><h3>Evaluation-ready</h3><p>Plan to assess usability, reliability, performance, compatibility, security, maintainability, and functional suitability.</p></article>
+  </div>
+</section>
 
-    <section class="section skills-section" id="skills">
-      <div class="section-heading"><p class="eyebrow">02 / SKILLS & INTERESTS</p><h2>Tools I’m exploring.</h2><p class="section-intro">A snapshot of the technologies and creative areas I have practiced or am currently learning.</p></div>
-      <div class="skills-grid">
-        <article class="skill-card"><span class="skill-number">01</span><div class="skill-icon">&lt;/&gt;</div><h3>Web Development</h3><p>Building page layouts and interactive website features.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
-        <article class="skill-card"><span class="skill-number">02</span><div class="skill-icon">{ }</div><h3>Application Development</h3><p>Practicing application logic, forms, and data-driven features.</p><div class="tags"><span>Python</span><span>Django</span><span>Flutter</span></div></article>
-        <article class="skill-card"><span class="skill-number">03</span><div class="skill-icon">▦</div><h3>UI / UX Design</h3><p>Exploring layout, visual hierarchy, and user-friendly flows.</p><div class="tags"><span>Figma</span><span>Wireframes</span><span>Prototyping</span></div></article>
-        <article class="skill-card"><span class="skill-number">04</span><div class="skill-icon">✧</div><h3>Game Design</h3><p>Planning game worlds, mechanics, characters, and interfaces.</p><div class="tags"><span>Game concepts</span><span>Storytelling</span></div></article>
-      </div>
-    </section>
+<section class="section" id="research">
+  <div class="section-head reveal"><div class="eyebrow mono">05 / The study</div><div><h2>Research with a<br>real-world purpose.</h2><p class="section-intro">The capstone focuses on the experiences of fisherfolk in Barangay Pasil and the development and evaluation of a monitoring system grounded in their needs.</p></div></div>
+  <div class="research">
+    <div class="research-card reveal"><h3>Project record</h3><p><strong>Development of an AI-Enabled IoT-Based Smart Fish Drying Monitoring System for Reducing Post-Harvest Losses Among Fisherfolk in Barangay Pasil in Support of Sustainable Development Goal 1.</strong></p><p>The research identifies challenges linked to weather conditions, manual monitoring, post-harvest losses, and food quality and safety. Its intended contribution is to support better-informed drying decisions and reduce avoidable losses.</p><p class="mono">Cebu Eastern College, Inc. · College of Information Technology · AY 2026–2027</p></div>
+    <div>
+      <ul class="research-list">
+        <li class="reveal"><span class="n">01</span><div><strong>Understand the current process</strong><p>Explore the experiences and challenges of fisherfolk, including weather, manual checking, product loss, and food safety.</p></div></li>
+        <li class="reveal"><span class="n">02</span><div><strong>Identify system requirements</strong><p>Focus on real-time environmental monitoring, AI-based analysis and prediction, and alert notifications.</p></div></li>
+        <li class="reveal"><span class="n">03</span><div><strong>Develop and evaluate</strong><p>Assess the system using the ISO/IEC 25010 quality characteristics identified in the research.</p></div></li>
+        <li class="reveal"><span class="n">04</span><div><strong>Use feedback to improve</strong><p>Consider fisherfolk observations and experiences when recommending future improvements.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <section class="section projects-section" id="projects">
-      <div class="projects-top"><div class="section-heading"><p class="eyebrow">03 / SELECTED PROJECTS</p><h2>Ideas in progress.</h2></div><p class="section-intro">Schoolwork and concepts that show what I’m learning. Project status is described honestly; add working links or screenshots when available.</p></div>
-      <div class="projects-grid">
-        <article class="project-card project-featured"><div class="project-art apparel-art"><div class="art-label">WEB DEVELOPMENT / DJANGO</div><div class="apparel-wordmark">UG<span>.</span></div><div class="art-bottom">UPPERGROUND<br>APPAREL</div><div class="art-circle"></div></div><div class="project-info"><div class="project-type">01 — E-COMMERCE WEBSITE</div><h3>UpperGround Apparel</h3><p>A dark-themed clothing store project with product listings, cart flows, account pages, and order-related features.</p><div class="tags"><span>Django</span><span>Python</span><span>UI Design</span></div><span class="project-status">Learning project</span></div></article>
-        <article class="project-card"><div class="project-art lantern-art"><div class="art-label">GAME DESIGN / CONCEPT</div><div class="lantern">✦<span>☼</span></div><div class="lantern-title">LANTERNBOUND</div><div class="lantern-subtitle">THE LAST LIGHT</div></div><div class="project-info"><div class="project-type">02 — 2D ADVENTURE PUZZLE</div><h3>LANTERNBOUND: The Last Light</h3><p>A game concept about Lumi, a young lantern keeper navigating a world covered in darkness using light to solve puzzles.</p><div class="tags"><span>Game Design</span><span>Story</span><span>Puzzles</span></div><span class="project-status">Course concept</span><a class="project-link" href="https://lbs-vyo1.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Limuel’s game website in a new tab">Play my game online ↗</a></div></article>
-        <article class="project-card"><div class="project-art fish-art"><div class="art-label">AI + IOT / CAPSTONE CHAPTER I</div><div class="fish-sensor">◉<span>°</span></div><div class="fish-title">SMART FISH DRYING</div><div class="fish-subtitle">MONITOR • PREDICT • ALERT</div></div><div class="project-info"><div class="project-type">03 — FISH DRYING MONITORING SYSTEM</div><h3>AI-Enabled Smart Fish Drying</h3><p>A proposed monitoring system to help fisherfolk in Barangay Pasil track drying conditions, receive alerts, and reduce weather-related post-harvest losses.</p><div class="tags"><span>AI</span><span>IoT</span><span>SDG 1</span></div><span class="project-status">Capstone proposal</span><a class="project-link" href="#capstone">Read Chapter I summary ↗</a></div></article>
-      </div>
-    </section>
+<section class="section" id="impact">
+  <div class="section-head reveal"><div class="eyebrow mono">06 / Intended impact</div><div><h2>Small signals.<br>Meaningful change.</h2><p class="section-intro">The intended outcomes reflect the study’s stated significance. They are goals of the proposed system, not guaranteed results.</p></div></div>
+  <div class="impact">
+    <div class="impact-item reveal"><strong>01</strong><p>Help reduce post-harvest fish losses by warning users about potentially unfavorable conditions.</p></div>
+    <div class="impact-item reveal"><strong>02</strong><p>Support improved dried-fish quality through better awareness of the drying environment.</p></div>
+    <div class="impact-item reveal"><strong>03</strong><p>Help fisherfolk make timely decisions and use their monitoring time more effectively.</p></div>
+    <div class="impact-item reveal"><strong>04</strong><p>Contribute to livelihood resilience and the goal of SDG 1: No Poverty.</p></div>
+  </div>
+</section>
 
 
-    <section class="section capstone-section" id="capstone">
-      <div class="section-heading"><p class="eyebrow">04 / CAPSTONE • CHAPTER I</p><h2>Technology for<br><span class="muted">a real-world need.</span></h2><p class="section-intro">Development of an AI-Enabled IoT-Based Smart Fish Drying Monitoring System for Reducing Post-Harvest Losses Among Fisherfolk in Barangay Pasil in Support of Sustainable Development Goal 1.</p></div>
-      <div class="capstone-grid">
-        <article class="capstone-panel"><span class="capstone-index">THE PROBLEM</span><h3>Unpredictable drying conditions</h3><p>Fisherfolk in Barangay Pasil often rely on open-air sun drying. Rain, cloudy weather, humidity, and changing temperatures can interrupt the process. Manual checking takes time, while spoilage and infestation can affect fish quality, safety, and income.</p></article>
-        <article class="capstone-panel"><span class="capstone-index">THE PROPOSED SOLUTION</span><h3>Monitor, analyze, and notify</h3><p>IoT sensors will collect temperature and humidity information, alongside weather-related data. AI will analyze the information to help identify potentially suitable or harmful drying conditions and provide timely alerts or recommendations.</p></article>
-        <article class="capstone-panel"><span class="capstone-index">CORE FUNCTIONS</span><h3>Useful information at a glance</h3><ul><li>Real-time environmental monitoring</li><li>AI-assisted condition analysis and prediction</li><li>Alerts and recommendations for users</li><li>Data recording and a monitoring interface</li></ul></article>
-        <article class="capstone-panel"><span class="capstone-index">SCOPE & LIMITATIONS</span><h3>Monitoring support, not automation</h3><p>The study focuses on selected fisherfolk in Barangay Pasil and evaluates the proposed monitoring system using user feedback. It does not directly automate the physical fish-drying process. Sensor, internet, power, and study-time limitations may affect implementation.</p></article>
-      </div>
-      <div class="capstone-outcome"><span class="capstone-index">GENERAL OBJECTIVE</span><p>Develop an AI-enabled IoT smart fish drying monitoring system intended to improve the drying process, reduce post-harvest losses, and support fisherfolk productivity and income.</p><span class="capstone-sdg">SDG 1 • NO POVERTY</span><p class="capstone-note">These are intended benefits of the proposed system, not results already proven by testing.</p></div>
-    </section>
+<section class="game-showcase" id="my-game">
+  <div class="game-copy reveal">
+    <div class="mono" style="color:var(--rust, #b85d3e);margin-bottom:12px">FEATURED GAME · PLAY ONLINE</div>
+    <h2>My Game Project</h2>
+    <p>Explore and play my game project in your browser. Select the button below to open the live game in a new tab.</p>
+    <a class="btn primary" href="https://lbs-vyo1.onrender.com/" target="_blank" rel="noopener noreferrer">Play My Game ↗</a>
+  </div>
+  <div class="game-card reveal">
+    <div class="game-card-top mono"><span>GAME PROJECT</span><span>LIVE LINK</span></div>
+    <div class="game-symbol" aria-hidden="true">▶</div>
+    <h3>Ready to Play?</h3>
+    <p>Hosted online · Opens in a separate tab</p>
+    <a href="https://lbs-vyo1.onrender.com/" target="_blank" rel="noopener noreferrer">Open game website ↗</a>
+  </div>
+</section>
 
-    <section class="contact-section section" id="contact">
-      <div class="contact-glow"></div><p class="eyebrow">05 / CONTACT</p><h2>Have a project<br>in mind?</h2><p class="contact-copy">I’m open to learning, collaboration, and conversations about technology, web design, and game ideas.</p>
-      <a class="button button-primary" href="mailto:limuelruiz21@gmail.com?subject=Hello%20from%20your%20portfolio">Email me <span>↗</span></a>
-      <p class="email-note">Contact directly at <a href="mailto:limuelruiz21@gmail.com"><strong>limuelruiz21@gmail.com</strong></a>. The button opens an email draft; it does not send automatically.</p>
-    </section>
-  </main>
-
-  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">LC</span><span>LIMUEL<span class="accent">.</span></span></a><p>Designed and built as a student portfolio.</p><a href="#home" class="back-top">BACK TO TOP ↑</a><span class="copyright">© <span id="year"></span> LIMUEL CATARATA</span></footer>
+<section class="contact" id="contact">
+  <div class="reveal"><div class="mono" style="color:#f8d4c4;margin-bottom:16px">A research concept rooted in Barangay Pasil</div><h2>Have a question<br>or an idea?</h2><p>Send a message about the capstone, the website, or a possible collaboration. The Gmail button opens a compose window addressed to limuelruiz21@gmail.com.</p></div>
+  <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=limuelruiz21%40gmail.com&amp;su=Hello%20from%20your%20portfolio" target="_blank" rel="noopener noreferrer">Message me on Gmail ↗</a>
+</section>
+<footer><div><span class="footer-mark">Pasil Field Notes</span> · Smart Fish Drying Monitoring System</div><div>Research concept · Barangay Pasil, Cebu City</div><div>Illustrative prototype — not live monitoring</div></footer>
+</main>
+<script>
+const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'CLOSE ×':'MENU ☰';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='MENU ☰';}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
